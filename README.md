@@ -2,7 +2,7 @@
 
 **Prépare une revue entre la description d’un projet immobilier et les règles PLU sourcées applicables.**
 
-[![Tests](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.1 · Documentation française
+[![Tests](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.2 · Documentation française
 
 Le moteur associe un projet à sa commune, sa parcelle et sa zone. Jev compare ensuite les faits narratifs du projet avec une règle PLU fournie et indique les informations manquantes ou conflits possibles.
 
@@ -16,6 +16,64 @@ npm run demo
 ```
 
 La démonstration utilise uniquement des données et probabilités synthétiques. Elle n’effectue aucun appel réseau et ne constitue pas une mesure de qualité de Jev.
+
+## Exemple exécutable
+
+Cet exemple confronte une extension de maison à une règle de recul. Il utilise un fournisseur Jev simulé : aucune clé API ni connexion réseau n’est nécessaire. L’assertion intégrée fait échouer la commande si le comportement attendu change.
+
+Le code complet de [`examples/demo.mjs`](examples/demo.mjs) est directement copiable :
+
+```js
+// Objectif : démontrer la frontière de décision sans appel réseau.
+import assert from "node:assert/strict";
+import { assessRule } from "../src/index.mjs";
+import { createFakeProvider } from "../src/jev.mjs";
+const p = createFakeProvider(() => ({
+  model: "jev-1.13.0",
+  answers: {
+    result: {
+      type: "choice",
+      choice: "insufficient_information",
+      probabilities: {
+        compatible: 0.08,
+        conditional: 0.15,
+        possible_conflict: 0.12,
+        insufficient_information: 0.65,
+      },
+      confidence: 0.65,
+    },
+  },
+  usage: {},
+}));
+const resultat = await assessRule(
+  {
+    id: "p1",
+    insee: "31555",
+    parcel: "AB-42",
+    zone: "UM1",
+    description: "Extension arrière d'une maison",
+    facts: { heightMeters: 6.5 },
+  },
+  {
+    id: "r1",
+    zone: "UM1",
+    topic: "setback",
+    text: "Les constructions respectent un recul défini selon la voie.",
+    sourceUrl: "https://geoportail-urbanisme.gouv.fr",
+  },
+  p,
+);
+assert.equal(resultat.result, "insufficient_information");
+console.log(JSON.stringify(resultat, null, 2));
+```
+
+Lancez-le avec :
+
+```sh
+npm run demo
+```
+
+Résultat à repérer : `result: insufficient_information`.
 
 ## Utilisation de la bibliothèque
 

@@ -1,6 +1,6 @@
 {
   "name": "@gbesse/jev-plu-preflight",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Prépare une revue entre la description d’un projet immobilier et les règles PLU sourcées applicables.",
   "type": "module",
   "license": "MIT",
