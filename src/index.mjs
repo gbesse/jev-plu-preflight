@@ -1,4 +1,4 @@
-// Purpose: Implement the package-specific, reviewable decision boundary.
+// Objectif : implémenter la frontière de décision métier propre au dépôt.
 export const RESULTS=["compatible","conditional","possible_conflict","insufficient_information"];
 export function project(input){if(!input?.id||!input?.insee||!input?.parcel||!input?.zone||!input?.description)throw new TypeError("Project needs id, insee, parcel, zone and description");if(!/^\d{5}$/.test(String(input.insee)))throw new TypeError("insee must contain 5 digits");return{id:String(input.id),insee:String(input.insee),parcel:String(input.parcel),zone:String(input.zone),description:String(input.description),facts:{...(input.facts||{})}};}
 export function pluRule(input){if(!input?.id||!input?.zone||!input?.topic||!input?.text||!input?.sourceUrl)throw new TypeError("Rule needs id, zone, topic, text and sourceUrl");return{id:String(input.id),zone:String(input.zone),topic:String(input.topic),text:String(input.text),conditions:[...(input.conditions||[])].map(String),sourceUrl:String(input.sourceUrl),documentDate:String(input.documentDate||"")};}

@@ -1,5 +1,5 @@
-# How it decides
+# Comment la décision est prise
 
-Parcel, municipality, zone, rule topic and numeric project values remain code-owned. Jev compares the narrative project facts with one supplied rule and cites no rule outside the input. Every result needs planning review.
+La parcelle, la commune, la zone, le thème et les valeurs numériques restent dans le code. Jev ne cite aucune règle absente de l’entrée. Chaque résultat exige une revue d’urbanisme.
 
-The exact questions and criteria are versioned beside the call in [src/index.mjs](../src/index.mjs). Synthetic demo probabilities are illustrative. Calibrate review thresholds on representative labels before operational use.
+La question et les critères exacts sont versionnés dans [`src/index.mjs`](../src/index.mjs). Les probabilités de la démonstration sont synthétiques. Calibrez les seuils de revue sur des cas français annotés et représentatifs avant tout usage opérationnel.

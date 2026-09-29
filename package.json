@@ -1,7 +1,7 @@
 {
   "name": "@gbesse/jev-plu-preflight",
-  "version": "0.1.0",
-  "description": "Build a reviewable preflight between a property project description and sourced French PLU rules.",
+  "version": "0.1.1",
+  "description": "Prépare une revue entre la description d’un projet immobilier et les règles PLU sourcées applicables.",
   "type": "module",
   "license": "MIT",
   "engines": {
