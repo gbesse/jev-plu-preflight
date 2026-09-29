@@ -1,0 +1,53 @@
+{
+  "name": "@gbesse/jev-plu-preflight",
+  "version": "0.1.0",
+  "description": "Build a reviewable preflight between a property project description and sourced French PLU rules.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.mts",
+      "import": "./src/index.mjs"
+    },
+    "./jev": {
+      "types": "./src/jev.d.mts",
+      "import": "./src/jev.mjs"
+    }
+  },
+  "bin": {
+    "jev-plu-preflight": "./bin/jev-plu-preflight.mjs"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "typecheck": "tsc --noEmit --strict --target ES2022 --module NodeNext docs/public-api-types.mts",
+    "test": "node --test",
+    "demo": "node examples/demo.mjs",
+    "validate": "npm run check && npm run typecheck && npm test && npm run demo"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbesse/jev-plu-preflight.git"
+  },
+  "keywords": [
+    "jev",
+    "typesafe-ai",
+    "france",
+    "jev",
+    "open-data",
+    "proptech",
+    "urban-planning"
+  ],
+  "files": [
+    "src",
+    "bin",
+    "docs",
+    "examples",
+    "scripts"
+  ]
+}
