@@ -2,7 +2,7 @@
 
 **Prépare une revue entre la description d’un projet immobilier et les règles PLU sourcées applicables.**
 
-[![Tests](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.2 · Documentation française
+[![Tests](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-plu-preflight/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.3 · Documentation française
 
 Le moteur associe un projet à sa commune, sa parcelle et sa zone. Jev compare ensuite les faits narratifs du projet avec une règle PLU fournie et indique les informations manquantes ou conflits possibles.
 
@@ -70,10 +70,20 @@ console.log(JSON.stringify(resultat, null, 2));
 Lancez-le avec :
 
 ```sh
-npm run demo
+npm run demo:principal
 ```
 
 Résultat à repérer : `result: insufficient_information`.
+
+### Cas limite à tester
+
+Une règle d’une autre zone du PLU est écartée avant analyse. Le code se trouve dans [`examples/cas-limite.mjs`](examples/cas-limite.mjs).
+
+```sh
+npm run demo:limite
+```
+
+Résultat à repérer : `result: different_zone · appels Jev: 0`. La commande `npm run demo` exécute les deux exemples.
 
 ## Utilisation de la bibliothèque
 
