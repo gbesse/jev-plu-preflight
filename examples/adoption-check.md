@@ -40,3 +40,15 @@ FR : adaptez une copie de la fixture locale à cette situation, puis vérifiez l
 EN: adapt a copy of the local fixture to this situation, then check the behavior described above. Values are illustrative, not measured Jev output.
 
 ES: adapte una copia de la fixture local a esta situación y compruebe el comportamiento descrito arriba. Los valores son ilustrativos, no resultados Jev medidos.
+
+## Second cas · Second case · Segundo caso
+
+```text
+zone=UC; project.setback=null; rule.setback_m=3
+```
+
+**FR :** Même avec une zone connue, l’absence de recul du projet demande une information complémentaire. Ne transformez pas ce manque en conformité.
+
+**EN:** Even with a known zone, a missing project setback requires more information. Do not treat missing data as compliance.
+
+**ES:** Aunque se conozca la zona, la ausencia del retranqueo del proyecto requiere más información. No trate los datos faltantes como cumplimiento.
